@@ -17,13 +17,13 @@ public class DialogueManager : MonoBehaviour
     public static void StartDialogue(string DialogueID)
     {
         // Set the Dialogue
-        for (int i = 0; i < CentalSOAssing.dialoguesSORef.Dialogues.Length; i++)
+        for (int i = 0; i < CentalAssing.DialoguesSORef.Dialogues.Length; i++)
         {
-            if (CentalSOAssing.dialoguesSORef.Dialogues[i].DialogueID != DialogueID)
+            if (CentalAssing.DialoguesSORef.Dialogues[i].DialogueID != DialogueID)
             {
                 continue;
             }
-            tmpDialogue = CentalSOAssing.dialoguesSORef.Dialogues[i];
+            tmpDialogue = CentalAssing.DialoguesSORef.Dialogues[i];
             break;
         }
 

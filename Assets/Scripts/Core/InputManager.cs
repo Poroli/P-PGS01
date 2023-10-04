@@ -22,9 +22,7 @@ public class InputManager : MonoBehaviour
             print("hit nothing");
             return;
         }
-
-
-            print("test");
+        
         switch (hit.collider.gameObject.tag)
         {
             case "UselessObject":
@@ -36,6 +34,9 @@ public class InputManager : MonoBehaviour
                 playerMove.SetTargetPosition(tempGO.transform.position, true);
                 tempGO.GetComponent<DialogueClient>().WaitForDialogue();
                 print ("TalkableOnject");
+                break;
+            case "Gate":
+                hit.collider.GetComponent<GateClient>().EnterGate();
                 break;
         }
 
@@ -52,7 +53,7 @@ public class InputManager : MonoBehaviour
         playerMove = FindObjectOfType<PlayerMove>();
         cam = Camera.main;
 
-        inputKey = CentalSOAssing.optionsSORef.InputKey;
+        inputKey = CentalAssing.OptionsSORef.InputKey;
     }
 
     private void Update()

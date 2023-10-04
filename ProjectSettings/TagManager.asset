@@ -6,6 +6,8 @@ TagManager:
   tags:
   - TalkableObject
   - UselessObject
+  - Place
+  - Gate
   layers:
   - Default
   - TransparentFX
