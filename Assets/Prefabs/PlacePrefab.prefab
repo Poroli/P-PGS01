@@ -163,11 +163,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 857241064465675786}
+  - {fileID: 5300769414522358278}
   - {fileID: 8611818179246179449}
   - {fileID: 705972759439470754}
-  - {fileID: 5300769414522358278}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4667681762848246604
 GameObject:
@@ -656,10 +656,6 @@ PrefabInstance:
     - target: {fileID: 6687005983649897605, guid: 553075d9ca7aad64c9efe7cdb71d9075, type: 3}
       propertyPath: m_Name
       value: GateNightStreet
-      objectReference: {fileID: 0}
-    - target: {fileID: 6687005983649897605, guid: 553075d9ca7aad64c9efe7cdb71d9075, type: 3}
-      propertyPath: m_TagString
-      value: Gate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

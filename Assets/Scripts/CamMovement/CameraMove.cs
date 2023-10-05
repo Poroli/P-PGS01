@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    public Transform[] BorderPoints = new Transform[4];
+    public Transform[] BorderPoints;
     [SerializeField] private Transform camFollowTarget;
     [SerializeField] private float viewportFollowDistance = 0.2f; // 20% entfernung eh Cam Target folgt
 
-    void LateUpdate()
+    public void SetBorderPoints(Transform[] NewBorderPoints)
+    {
+        BorderPoints = NewBorderPoints;
+    }
+    private void LateUpdate()
     {
         Vector3 viewportPosition = Camera.main.WorldToViewportPoint(camFollowTarget.position);
         Vector3 pos = transform.position;
@@ -94,18 +98,5 @@ public class CameraMove : MonoBehaviour
         }
 
         return false; // Keine Kollision
-    }
-
-
-    void OnDrawGizmos()
-    {
-        if (BorderPoints == null || BorderPoints.Length < 2)
-            return;
-
-        Gizmos.color = Color.red;
-        for (int i = 0; i < BorderPoints.Length; i++)
-        {
-            Gizmos.DrawLine(BorderPoints[i].position, BorderPoints[(i + 1) % BorderPoints.Length].position);
-        }
     }
 }

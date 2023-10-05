@@ -5,9 +5,10 @@ using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMove : MonoBehaviour
 {
+    public static Vector2 TargetPosition;
+    
     [SerializeField] private LayerMask mask;
     private Rigidbody2D rb2D;
-    private static Vector2 targetPosition;
     private static GameObject playerGO;
 
     [SerializeField] private float smoothTime;
@@ -16,14 +17,14 @@ public class PlayerMove : MonoBehaviour
 
     private void Move()
     {
-        rb2D.MovePosition(Vector2.SmoothDamp(gameObject.transform.position, targetPosition, ref currentPlayerVelocity, smoothTime, maxSpeed, Time.deltaTime));
+        rb2D.MovePosition(Vector2.SmoothDamp(gameObject.transform.position, TargetPosition, ref currentPlayerVelocity, smoothTime, maxSpeed, Time.deltaTime));
     }
 
     public void SetTargetPosition(Vector2 startVec, bool NeedToCalculate)
     {
         if (!NeedToCalculate)
         {
-            targetPosition = startVec;
+            TargetPosition = startVec;
             return;
         }
 
@@ -36,14 +37,14 @@ public class PlayerMove : MonoBehaviour
             {
                 continue;
             }
-            targetPosition = hit.point;
+            TargetPosition = hit.point;
             break;
         }
     }
 
     public static bool DialoguePartnerReached()
     {
-        if (Vector2.Distance(playerGO.transform.position, targetPosition) < 0.1f)
+        if (Vector2.Distance(playerGO.transform.position, TargetPosition) < 0.1f)
         {
             return true;
         }
