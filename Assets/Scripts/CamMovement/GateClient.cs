@@ -32,7 +32,7 @@ public class GateClient : MonoBehaviour
 
     private void GetRefOfObject()
     {
-        var GORefLink = CentalAssing.ReferenceHolderSORef.GOReferences;
+        var GORefLink = CentralAssing.ReferenceHolderSORef.GOReferences;
         for (int i = 0; i < GORefLink.Count; i++)
         {
             if (GORefLink[i].GONameAsks != gameObject.name)
@@ -59,7 +59,7 @@ public class GateClient : MonoBehaviour
     {
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
         camMove = FindObjectOfType<CameraMove>();
-        player = GameObject.FindWithTag(CentalAssing.TagPlayerRef);
+        player = GameObject.FindWithTag(CentralAssing.TagPlayerRef);
         GetRefOfObject();
     }
 }
@@ -83,7 +83,7 @@ class GateClientEditor : Editor
         string tmpName = "None";
         bool helperBool = false;
         int i = 0;
-        var GORefLink = CentalAssing.ReferenceHolderSORef.GOReferences;
+        var GORefLink = CentralAssing.ReferenceHolderSORef.GOReferences;
 
         for (; i < GORefLink.Count; i++)
         {
@@ -97,6 +97,7 @@ class GateClientEditor : Editor
         }
         if (!helperBool)
         {
+            Debug.Log("CreatedNewListElement");
             GOReference tmpGORef = new();
             tmpGORef.GONameAsks = gateClient.gameObject.name;
             GORefLink.Add(tmpGORef);
@@ -104,7 +105,7 @@ class GateClientEditor : Editor
         
         if (GUILayout.Button("Gate To Room: " + tmpName))
         {
-            GameObject[] tempRooms = GameObject.FindGameObjectsWithTag(CentalAssing.TagPlacesRef);
+            GameObject[] tempRooms = GameObject.FindGameObjectsWithTag(CentralAssing.TagPlacesRef);
 
             GenericMenu menu = new GenericMenu();
             for (int j = 0; j < tempRooms.Length; j++)
@@ -117,6 +118,16 @@ class GateClientEditor : Editor
                 });
             }
             menu.ShowAsContext();
+        }
+
+        if (GUI.changed)
+        {
+            // Markieren Sie das Objekt als "dirty"
+            EditorUtility.SetDirty(CentralAssing.ReferenceHolderSORef);
+
+            // Und speichern Sie alle Änderungen sofort
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class BorderHolder : MonoBehaviour
@@ -66,6 +67,13 @@ class BorderHolderEditor : Editor
         if (GUILayout.Button("Update BorderPoints"))
         {
             borderDebug.UpdateBorderPoints();
+        }
+
+        // Wenn sich das Objekt geändert hat
+        if (GUI.changed)
+        {
+            // Markieren Sie die Szene als "dirty"
+            EditorSceneManager.MarkSceneDirty(borderDebug.gameObject.scene);
         }
     }
 }

@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b96aa331f092c54e947d173632598e5, type: 3}
   m_Name: ReferenceHolder
   m_EditorClassIdentifier: 
-  GOReferences: []
+  GOReferences:
+  - GONameAsks: GateNightStreet
+    GONameReferenced: Grassland

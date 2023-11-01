@@ -53,7 +53,7 @@ public class InputManager : MonoBehaviour
         playerMove = FindObjectOfType<PlayerMove>();
         cam = Camera.main;
 
-        inputKey = CentalAssing.OptionsSORef.InputKey;
+        inputKey = CentralAssing.OptionsSORef.InputKey;
     }
 
     private void Update()

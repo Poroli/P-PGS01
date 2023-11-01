@@ -32,7 +32,7 @@ class ActivateNPCDialogueEditor : Editor
     {
         MonoBehaviour monoBev = (MonoBehaviour)target;
         dialogueClient = monoBev.GetComponent<DialogueClient>();
-        tempDialoguesSO = CentalAssing.DialoguesSORef;
+        tempDialoguesSO = CentralAssing.DialoguesSORef;
     }
 
     public override void OnInspectorGUI()
