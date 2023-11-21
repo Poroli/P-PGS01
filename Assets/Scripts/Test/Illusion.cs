@@ -13,22 +13,18 @@ public class Illusion : MonoBehaviour
 
     private void RotateSides()
     {
-        float angle = 0;
-        float xDistance = Mathf.Abs(cam.transform.position.x) - Mathf.Abs(transform.position.x);
-        float zDistance = Mathf.Abs(cam.transform.position.z) - Mathf.Abs(transform.position.z);
-        angle = Mathf.Asin(xDistance / Mathf.Sqrt((xDistance * xDistance) + (zDistance * zDistance)));
-        angle = Mathf.Rad2Deg * angle;
-
-        print(angle);
-
-        // Umwandeln des Winkels in die Rotation der Seiten
-        float pov = cam.fieldOfView;
+        float xDistance = Mathf.Abs(cam.transform.position.x - transform.position.x);
+        float visibleWidth = cam.orthographicSize * cam.aspect;
         float rotation = 0;
+        float tmpDistanceRatio = (Mathf.Abs(sidesMaxRotation) - -90) / visibleWidth;
 
-        if (angle < pov)
+        if (xDistance < visibleWidth)
         {
-            float tmpAngleRatio = (Mathf.Abs(sidesMaxRotation) - -90) / pov;
-            rotation = angle * tmpAngleRatio;
+            rotation = xDistance * tmpDistanceRatio;
+        }
+        else
+        {
+            rotation = visibleWidth * tmpDistanceRatio;
         }
 
         // Rotation der Seiten basierend auf der Position des Spielers
