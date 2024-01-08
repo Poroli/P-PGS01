@@ -15,3 +15,5 @@ MonoBehaviour:
   GOReferences:
   - GONameAsks: GateNightStreet
     GONameReferenced: Grassland
+  - GONameAsks: GatePrefab
+    GONameReferenced: 

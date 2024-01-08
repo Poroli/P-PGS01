@@ -8,6 +8,8 @@ TagManager:
   - UselessObject
   - Place
   - Gate
+  - MiniGameCableAccess
+  - MiniGameCablePlug
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - MiniGameRope
   - 
   - 
   - 
